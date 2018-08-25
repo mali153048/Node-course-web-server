@@ -1,6 +1,7 @@
 const express=require('express');
 const hbs=require('hbs');
 const fs=require('fs');
+const port=process.env.PORT || 3000;
 
 hbs.registerPartials(__dirname+'/views/partials');
 var app=express();
@@ -17,9 +18,9 @@ app.use(function (request,response,next) {          //registering middleware
 });
 
 // app.use are executed in the order in which they are placed, first come first execute.
-app.use(function (request,response,next) {
-    response.render('maintenence.hbs');
-});
+// app.use(function (request,response,next) {
+//     response.render('maintenence.hbs');
+// });
 
 app.use(express.static(__dirname+'/public'));
 
@@ -39,4 +40,6 @@ app.get('/',function (request,response) {
        pageTitle:"Home page"
    });
 });
-app.listen(3000);
+app.listen(port,function () {
+    console.log("server is up on port "+port);
+});
