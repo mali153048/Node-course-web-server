@@ -28,6 +28,12 @@ hbs.registerHelper('getCurrentYear',function () {
    return new Date().getFullYear()
 });
 
+app.get('/portfolio',function (request,response) {
+    response.render('portfolio.hbs',{
+       pageTitle:"This is my Portfolio"
+    });
+});
+
 app.get('/about',function (request,response) {
     response.render('about.hbs',{
         pageTitle:"About Page"
